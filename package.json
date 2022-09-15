@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "appium": "^1.22.3",
+    "appium-flutter-finder": "^0.1.0",
+    "webdriverio": "^7.24.0"
+  },
+  "name": "appium_testing",
+  "description": "A new Flutter project.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./src/test.js",
+    "ios": "APPIUM_OS=ios npm start",
+    "android": "APPIUM_OS=android npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qu0cquyen/appium-testing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qu0cquyen/appium-testing/issues"
+  },
+  "homepage": "https://github.com/qu0cquyen/appium-testing#readme"
+}
