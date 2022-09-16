@@ -24,11 +24,10 @@ jobs:
         with:
           name: release-apk
           path: build/app/outputs/apk/release/app-release.apk
-  send_signal_to_discord:
-    - name: Send status to Discord
-      uses: nebularg/actions-discord-webhook@v1
-      with: 
-        webhook_url: ${{ secrets.discord_webhook_url }} # required
-        status: ${{ job.status }} # optional, this is the default
-      if: always() # or failure() or success()
+      - name: Send status to Discord
+        uses: nebularg/actions-discord-webhook@v1
+        with: 
+          webhook_url: ${{ secrets.discord_webhook_url }} # required
+          status: ${{ job.status }} # optional, this is the default
+        if: always() # or failure() or success()
     
