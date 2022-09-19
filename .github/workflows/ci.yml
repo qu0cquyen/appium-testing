@@ -19,7 +19,7 @@ jobs:
       - name: Get Dependencies
         run: flutter pub get
       - name: Build APK
-        run: flutter build apk --debug
+        run: flutter build apk --debug >> ./build/apk
       - uses: actions/upload-artifact@v3
         with:
           name: release-apk
