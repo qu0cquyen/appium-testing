@@ -29,10 +29,7 @@ jobs:
         run: |
           npm install --save-dev
       - name: Start Appium Server and Poll for Appium Server to Start
-        run: |
-          until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:4723/wd/hub/sessions); do
-            sleep 5
-          done
+        uses: moatazeldebsy/appium-server-gitHub-action@V1.0.4
       - name: Clean up
         run: flutter clean
       - name: Get Dependencies
