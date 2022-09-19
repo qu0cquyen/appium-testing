@@ -16,6 +16,23 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
+      - name: Setup Node JS
+        uses: actions/setup-node@v1
+        with: 
+          node-version: '10.17.0'
+      - name: Clean packages
+        run: |
+          rm -rf node_modules
+          npm cache clean --force
+          rm -rf package-lock.json
+      - name: Install Repo and Dependencies
+        run: |
+          npm install --save-dev
+      - name: Start Appium Server and Poll for Appium Server to Start
+        run: |
+          until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:4723/wd/hub/sessions); do
+            sleep 5
+          done
       - name: Clean up
         run: flutter clean
       - name: Get Dependencies
@@ -26,4 +43,5 @@ jobs:
         with:
           name: debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
+      
   
