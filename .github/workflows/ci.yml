@@ -23,5 +23,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: upload apk
-          path: output/apk/app-debug.apk
+          path: appium-testing/output/apk/app-debug.apk
   
