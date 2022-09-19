@@ -22,6 +22,6 @@ jobs:
         run: flutter build apk --debug >> ./build/apk/app.apk
       - uses: actions/upload-artifact@v3
         with:
-          name: release-apk
-          path: output/apk/app-release.apk
+          name: upload apk
+          path: output/apk/app-debug.apk
   
