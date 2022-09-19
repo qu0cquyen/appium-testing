@@ -16,13 +16,14 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-      - run: flutter clean
-#       - name: Get Dependencies
-      - run: flutter pub get
-#       - name: Build APK
-      - run: flutter build apk --debug 
+      - name: Clean up
+        run: flutter clean
+      - name: Get Dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: flutter build apk --debug 
       - uses: actions/upload-artifact@v3
         with:
           name: debug-apk
-          path: output/apk/app-debug.apk
+          path: output/apk/debug-apk.apk
   
