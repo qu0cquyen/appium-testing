@@ -25,5 +25,5 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: debug-apk
-          path: output/apk/debug-apk.apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
   
