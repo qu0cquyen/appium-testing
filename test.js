@@ -13,7 +13,7 @@ const osSpecificOps = process.env.APPIUM_OS === 'android' ? {
 
     deviceName: 'emulator-5554',
 
-    app: __dirname + 'build/app/outputs/flutter-apk/app-debug.apk',
+    app: __dirname + '/build/app/outputs/flutter-apk/app-debug.apk',
 
 } : process.env.APPIUM_OS === 'ios' ? {
 
@@ -37,7 +37,7 @@ const osSpecificOps = process.env.APPIUM_OS === 'android' ? {
 
 const opts = {
 
-    port: 4723,
+    port: 4472,
 
     capabilities: {
 
