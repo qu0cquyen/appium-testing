@@ -17,8 +17,8 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
-      - name: Install Android Emulator
-        uses: reactivecircus/android-emulator-runner@v2
+      # - name: Install Android Emulator
+      #   uses: reactivecircus/android-emulator-runner@v2
       - name: Install and Run Appium Server
         run: |
           chmod +x ./scripts/RunAppiumServer.sh 
