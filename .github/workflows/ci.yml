@@ -25,12 +25,15 @@ jobs:
       - name: Install Repo and Dependencies
         run: |
           npm install -g appium
-          appium -v 
+          appium -v
+          appium --session-override -a 127.0.0
+          appium -a
           appium 
     
   build_apk:
     name: Build Flutter (Android)
     runs-on: macos-latest
+    needs: [install_appium_server]
   
     steps:
       - uses: actions/checkout@v3
