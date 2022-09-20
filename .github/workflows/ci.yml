@@ -24,9 +24,9 @@ jobs:
       #     chmod +x ./scripts/RunAppiumServer.sh 
       #     ./scripts/RunAppiumServer.sh
       - name: Set up Node JS 10.17.0
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
-          node-version: '10.17.0'
+          node-version: 16
       # Clean Packages & Install Dependencies 
       - name: Clean Packages 
         run: |
