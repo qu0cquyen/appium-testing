@@ -36,7 +36,6 @@ const osSpecificOps = process.env.APPIUM_OS === 'android' ? {
 
 
 const opts = {
-    path: '/wd/hub',
     port: 4723,
 
     capabilities: {
