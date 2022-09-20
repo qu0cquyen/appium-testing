@@ -5,6 +5,29 @@ on:
   pull_request:
     branches: [ "master" ]
 jobs:
+  install_appium_server:
+    name: Install and Start Appium Server
+    runs-on: macos-latest
+
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Setup Node JS
+        uses: actions/setup-node@v3
+        with: 
+          node-version: 16
+      # Clean Packages & Install Dependencies
+      - name: Clean Packages
+        run: |
+          rm -rf node_modules
+          npm cache clean --force
+          rm -rf package-lock.json
+      # Install Repo and Dependencies
+      - name: Install Repo and Dependencies
+        run: |
+          npm install -g appium
+          appium -v 
+          appium 
+    
   build_apk:
     name: Build Flutter (Android)
     runs-on: macos-latest
@@ -68,9 +91,6 @@ jobs:
           script: |
             adb devices
             npm install 
-            npm install -g appium
-            appium -v
-            appium
             APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
         if: always()
