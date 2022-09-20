@@ -37,13 +37,13 @@ jobs:
       - name: Install Repo and Dependencies
         run: |
           npm install --save-dev
-      # Install Android Emulator
-      - name: run tests
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 29
-          script: |
-            adb devices
+      # # Install Android Emulator and run test
+      # - name: run tests
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     script: |
+      #       adb devices
       # - name: Appium Server Action
       #   uses: moatazeldebsy/Appium-Server-GitHub-Action@V1.0.5
       - name: Install and Run Appium Server
@@ -60,6 +60,15 @@ jobs:
         with:
           name: debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
+      # Install Android Emulator and run test
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            adb devices
+            npm install 
+            APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
         if: always()
         with:
