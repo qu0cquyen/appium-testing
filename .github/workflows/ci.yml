@@ -19,10 +19,12 @@ jobs:
           channel: "stable"
       # - name: Install Android Emulator
       #   uses: reactivecircus/android-emulator-runner@v2
-      - name: Install and Run Appium Server
-        run: |
-          chmod +x ./scripts/RunAppiumServer.sh 
-          ./scripts/RunAppiumServer.sh
+      # - name: Install and Run Appium Server
+      #   run: |
+      #     chmod +x ./scripts/RunAppiumServer.sh 
+      #     ./scripts/RunAppiumServer.sh
+      - name: Appium Server Action
+        uses: moatazeldebsy/Appium-Server-GitHub-Action@V1.0.5
       - name: Clean up
         run: flutter clean
       - name: Get Dependencies
