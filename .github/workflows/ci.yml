@@ -5,30 +5,30 @@ on:
   pull_request:
     branches: [ "master" ]
 jobs:
-  install_appium_server:
-    name: Install and Start Appium Server
-    runs-on: macos-latest
+  # install_appium_server:
+  #   name: Install and Start Appium Server
+  #   runs-on: macos-latest
 
-    steps: 
-      - uses: actions/checkout@v3
-      - name: Setup Node JS
-        uses: actions/setup-node@v3
-        with: 
-          node-version: 16
-      # Clean Packages & Install Dependencies
-      - name: Clean Packages
-        run: |
-          rm -rf node_modules
-          npm cache clean --force
-          rm -rf package-lock.json
-      # Install Repo and Dependencies
-      - name: Install Repo and Dependencies
-        run: |
-          npm install -g appium
-          appium -v
-          appium --session-override -a 127.0.0.0
-          appium -a
-          appium 
+  #   steps: 
+  #     - uses: actions/checkout@v3
+  #     - name: Setup Node JS
+  #       uses: actions/setup-node@v3
+  #       with: 
+  #         node-version: 16
+  #     # Clean Packages & Install Dependencies
+  #     - name: Clean Packages
+  #       run: |
+  #         rm -rf node_modules
+  #         npm cache clean --force
+  #         rm -rf package-lock.json
+  #     # Install Repo and Dependencies
+  #     - name: Install Repo and Dependencies
+  #       run: |
+  #         npm install -g appium
+  #         appium -v
+  #         appium --session-override -a 127.0.0.0
+  #         appium -a
+  #         appium 
     
   build_apk:
     name: Build Flutter (Android)
@@ -93,6 +93,8 @@ jobs:
           api-level: 29
           script: |
             adb devices
+            chmod +x ./scripts/RunAppiumServer.sh 
+            ./scripts/RunAppiumServer.sh
             npm install 
             APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
