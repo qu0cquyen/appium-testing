@@ -67,10 +67,9 @@ jobs:
           api-level: 29
           script: |
             adb devices
-            npm install -g appium
+            npm install 
             appium -v
             appium
-            npm install 
             APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
         if: always()
