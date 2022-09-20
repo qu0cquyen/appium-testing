@@ -5,8 +5,7 @@
     "main": "index.js",
     "dependencies": {
         "appium-flutter-finder": "0.1.0",
-        "webdriverio": "^5.23.0",
-        "appium": "1.22.3"
+        "webdriverio": "^5.23.0"
     },
     "scripts": {
         "start": "node test.js",

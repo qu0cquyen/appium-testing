@@ -68,6 +68,7 @@ jobs:
           script: |
             adb devices
             npm install 
+            npm install -g appium
             appium -v
             appium
             APPIUM_OS=android npm start
