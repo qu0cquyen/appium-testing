@@ -33,7 +33,6 @@ jobs:
   build_apk:
     name: Build Flutter (Android)
     runs-on: macos-latest
-    needs: [install_appium_server]
   
     steps:
       - uses: actions/checkout@v3
