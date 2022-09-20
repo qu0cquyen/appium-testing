@@ -26,7 +26,7 @@ jobs:
         run: |
           npm install -g appium
           appium -v
-          appium --session-override -a 127.0.0
+          appium --session-override -a 127.0.0.0
           appium -a
           appium 
     
