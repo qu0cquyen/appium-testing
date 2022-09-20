@@ -16,6 +16,13 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable"
+      - name: Install Android Emulator
+        uses: reactivecircus/android-emulator-runner@v1 # install and create the Emulator
+        with:
+          api-level: ${{ matrix.api-level }}
+          target: ${{ matrix.target }}
+          arch: x86_64
+          profile: Nexus 6
       - name: Install and Run Appium Server
         run: |
           chmod +x ./scripts/RunAppiumServer.sh 
@@ -30,5 +37,9 @@ jobs:
         with:
           name: debug-apk
           path: build/app/outputs/flutter-apk/app-debug.apk
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
       
   
