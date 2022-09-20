@@ -27,6 +27,7 @@ jobs:
           target: ${{ matrix.target }}
           arch: x86_64
           profile: Nexus 6
+          script: ./gradlew connectedCheck
       - name: Install and Run Appium Server
         run: |
           chmod +x ./scripts/RunAppiumServer.sh 
