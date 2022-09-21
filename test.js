@@ -37,6 +37,7 @@ const osSpecificOps = process.env.APPIUM_OS === 'android' ? {
 
 const opts = {
     port: 4723,
+    path: '/',
 
     capabilities: {
 

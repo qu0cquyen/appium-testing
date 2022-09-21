@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ex
 npm install -g appium@next
-appium driver install uiautomator2
+appium driver install flutter
 appium -v
-appium server &>/dev/null &
+appium &>/dev/null &
 
 
