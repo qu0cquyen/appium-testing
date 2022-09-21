@@ -71,10 +71,10 @@ jobs:
       #       adb devices
       # - name: Appium Server Action
       #   uses: moatazeldebsy/Appium-Server-GitHub-Action@V1.0.5
-      # - name: Install and Run Appium Server
-      #   run: |
-      #     chmod +x ./scripts/RunAppiumServer.sh 
-      #     ./scripts/RunAppiumServer.sh
+      - name: Install and Run Appium Server
+        run: |
+          chmod +x ./scripts/RunAppiumServer.sh 
+          ./scripts/RunAppiumServer.sh
       - name: Clean up
         run: flutter clean
       - name: Get Dependencies
@@ -92,8 +92,6 @@ jobs:
           api-level: 29
           script: |
             adb devices
-            chmod +x ./scripts/RunAppiumServer.sh 
-            ./scripts/RunAppiumServer.sh
             npm install 
             APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
