@@ -41,9 +41,14 @@ const opts = {
 
     capabilities: {
 
-        ...osSpecificOps,
+        // ...osSpecificOps,
+        "platformName": 'Android',
 
-        "automationName": 'Flutter'
+        "appium:deviceName": 'emulator-5554',
+
+        "appium:app": __dirname + '/build/app/outputs/flutter-apk/app-debug.apk',
+
+        "appium:automationName": 'Flutter'
 
     }
 
