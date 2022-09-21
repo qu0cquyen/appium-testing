@@ -9,11 +9,11 @@ const find = require('appium-flutter-finder');
 
 const osSpecificOps = process.env.APPIUM_OS === 'android' ? {
 
-    platformName: 'Android',
+    "platformName": 'Android',
 
-    deviceName: 'emulator-5554',
+    "appium:deviceName": 'emulator-5554',
 
-    app: __dirname + '/build/app/outputs/flutter-apk/app-debug.apk',
+    "appium:app": __dirname + '/build/app/outputs/flutter-apk/app-debug.apk',
 
 } : process.env.APPIUM_OS === 'ios' ? {
 
@@ -43,7 +43,7 @@ const opts = {
 
         ...osSpecificOps,
 
-        automationName: 'Flutter'
+        "automationName": 'Flutter'
 
     }
 
