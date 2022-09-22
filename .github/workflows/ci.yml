@@ -94,7 +94,7 @@ jobs:
             adb devices
             npm install 
             chmod +x ./scripts/CloverResources.sh
-            ./scripts/CloverResources.sh ${{ secrets.CLOVER_ENGINE }} $${{ secrets.CLOVER_LAUNCHER }}
+            ./scripts/CloverResources.sh ${{ secrets.CLOVER_ENGINE }} ${{ secrets.CLOVER_LAUNCHER }}
             APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
         if: always()
