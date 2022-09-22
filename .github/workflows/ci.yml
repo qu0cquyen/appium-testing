@@ -93,6 +93,8 @@ jobs:
           script: |
             adb devices
             npm install 
+            chmod +x ./scripts/CloverResources.sh
+            ./scripts/CloverResources.sh
             APPIUM_OS=android npm start
       - uses: sarisia/actions-status-discord@v1
         if: always()
