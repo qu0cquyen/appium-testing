@@ -8,6 +8,14 @@ if [ $# -eq 2 ]
         # Download second resouce
         if curl -J -L "$2" --output "$HOME/Desktop/clover_launcher"; then
             echo "Download Finished"
+            # Move to $HOME/Destop
+            cd "$HOME/Desktop"
+            # Install Clover Engine and Clover Launcher
+            adb -s emulator-5554 install -g com.clover.engine
+            sleep 2
+            adb -s emulator-5554 install -g com.clover.launcher
+            
+            echo "Install downloaded apk success"
         else
             echo "Failed to download Clover Launcher"
             exit 1
