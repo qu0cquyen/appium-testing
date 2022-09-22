@@ -11,9 +11,9 @@ if [ $# -eq 2 ]
             # Move to $HOME/Destop
             cd "$HOME/Desktop"
             # Install Clover Engine and Clover Launcher
-            adb -s emulator-5554 install -g com.clover.engine
+            adb -s emulator-5554 install -g clover_engine.apk
             sleep 2
-            adb -s emulator-5554 install -g com.clover.launcher
+            adb -s emulator-5554 install -g clover_launcher.apk
             
             echo "Install downloaded apk success"
         else
