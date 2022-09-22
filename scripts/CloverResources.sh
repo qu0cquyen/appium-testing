@@ -9,11 +9,10 @@ if [ $# -eq 2 ]
         if curl -J -L "$2" --output "$HOME/Desktop/clover_launcher"; then
             echo "Download Finished"
             # Move to $HOME/Destop
-            cd "$HOME/Desktop"
             # Install Clover Engine and Clover Launcher
-            adb -s emulator-5554 install -g clover_engine.apk
+            adb -s emulator-5554 install -g "$HOME/Desktop/clover_engine.apk"
             sleep 2
-            adb -s emulator-5554 install -g clover_launcher.apk
+            adb -s emulator-5554 install -g "$HOME/Desktop/clover_launcher.apk"
             
             echo "Install downloaded apk success"
         else
