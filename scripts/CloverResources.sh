@@ -4,16 +4,16 @@ set -ex
 if [ $# -eq 2 ] 
     then
         
-    if curl  -J -L "$1" --output "clover_engine"; then
+    if curl  -J -L "$1" --output "clover_engine.apk"; then
         # Download second resouce
-        if curl -J -L "$2" --output "clover_launcher"; then
+        if curl -J -L "$2" --output "clover_launcher.apk"; then
             echo "Download Finished"
             # Move to $HOME/Destop
             # Install Clover Engine and Clover Launcher
             ls -all
-            adb -s emulator-5554 shell install -g clover_engine.apk
+            adb -s emulator-5554 install -g clover_engine.apk
             sleep 2
-            adb -s emulator-5554 shell install -g clover_launcher.apk
+            adb -s emulator-5554 install -g clover_launcher.apk
             
             echo "Install downloaded apk success"
         else
