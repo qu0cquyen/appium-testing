@@ -1,0 +1,104 @@
+name: Flutter CI
+on: 
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+jobs:
+  # install_appium_server:
+  #   name: Install and Start Appium Server
+  #   runs-on: macos-latest
+
+  #   steps: 
+  #     - uses: actions/checkout@v3
+  #     - name: Setup Node JS
+  #       uses: actions/setup-node@v3
+  #       with: 
+  #         node-version: 16
+  #     # Clean Packages & Install Dependencies
+  #     - name: Clean Packages
+  #       run: |
+  #         rm -rf node_modules
+  #         npm cache clean --force
+  #         rm -rf package-lock.json
+  #     # Install Repo and Dependencies
+  #     - name: Install Repo and Dependencies
+  #       run: |
+  #         npm install -g appium
+  #         appium -v
+  #         appium --session-override -a 127.0.0.0
+  #         appium -a
+  #         appium 
+    
+  build_apk:
+    name: Build Flutter (Android)
+    runs-on: macos-latest
+  
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v1
+        with:
+          java-version: "12.x"
+      - uses: subosito/flutter-action@v2.7.1
+        with:
+          channel: "stable"
+      # - name: Install Android Emulator
+      #   uses: reactivecircus/android-emulator-runner@v2
+      # - name: Install and Run Appium Server
+      #   run: |
+      #     chmod +x ./scripts/RunAppiumServer.sh 
+      #     ./scripts/RunAppiumServer.sh
+      - name: Set up Node JS 10.17.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      # Clean Packages & Install Dependencies 
+      - name: Clean Packages 
+        run: |
+          rm -rf node_modules
+          npm cache clean --force
+          rm -rf package-lock.json
+      # Install Repo and Dependencies
+      - name: Install Repo and Dependencies
+        run: |
+          npm install --save-dev
+      # # Install Android Emulator and run test
+      # - name: run tests
+      #   uses: reactivecircus/android-emulator-runner@v2
+      #   with:
+      #     api-level: 29
+      #     script: |
+      #       adb devices
+      # - name: Appium Server Action
+      #   uses: moatazeldebsy/Appium-Server-GitHub-Action@V1.0.5
+      - name: Install and Run Appium Server
+        run: |
+          chmod +x ./scripts/RunAppiumServer.sh 
+          ./scripts/RunAppiumServer.sh
+      - name: Clean up
+        run: flutter clean
+      - name: Get Dependencies
+        run: flutter pub get
+      - name: Build APK
+        run: flutter build apk --debug 
+      - uses: actions/upload-artifact@v3
+        with:
+          name: debug-apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
+      # Install Android Emulator and run test
+      - name: run tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: |
+            adb devices
+            npm install 
+            chmod +x ./scripts/CloverResources.sh
+            ./scripts/CloverResources.sh ${{ secrets.CLOVER_ENGINE }} ${{ secrets.CLOVER_LAUNCHER }}
+            APPIUM_OS=android npm start
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+      
+  
